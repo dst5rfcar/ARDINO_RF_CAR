@@ -126,44 +126,44 @@ void do_Uart_Tick()
    TURNSPEED=SPEED*3/2;
    if (SPEED>250) SPEED=250;
    if (TURNSPEED>250) TURNSPEED=250;
-  switch (Uart_Date)    //serial control instructions
-  {
-    case 'M':  
-      go_Advance();
-      turn(FRONT);
-      analogWrite(ENA,SPEED);
-    break;
-    case 'L':  
-      if(cs.angle=1)  turn(LEFT);
-      if(cs.angle=2)  turn(SHARP_LEFT); 
-      analogWrite(ENA,SPEED);
-    break;
-    case 'R': 
-      if(cs.angle=-1) turn(RIGHT);
-      if(cs.angle=-2) turn(SHARP_RIGHT);  
-      analogWrite(ENA,SPEED);
-    break;
-    case 'B':  
-      go_Back(); 
-      analogWrite(ENA,SPEED);
-    break;
-    case 'X': 
-      go_Back();
-      if(cs.angle=1)  turn(LEFT);
-      if(cs.angle=2)  turn(SHARP_LEFT); 
-      analogWrite(ENA,SPEED);
-    break;
-    case 'Y':  
-      go_Back();
-      if(cs.angle=-1) turn(RIGHT);
-      if(cs.angle=-2) turn(SHARP_RIGHT);  
-      analogWrite(ENA,SPEED);
-    break;
+  // switch (Uart_Date)    //serial control instructions
+  // {
+  //   case 'M':  
+  //     go_Advance();
+  //     turn(FRONT);
+  //     analogWrite(ENA,SPEED);
+  //   break;
+  //   case 'L':  
+  //     if(cs.angle=1)  turn(LEFT);
+  //     if(cs.angle=2)  turn(SHARP_LEFT); 
+  //     analogWrite(ENA,SPEED);
+  //   break;
+  //   case 'R': 
+  //     if(cs.angle=-1) turn(RIGHT);
+  //     if(cs.angle=-2) turn(SHARP_RIGHT);  
+  //     analogWrite(ENA,SPEED);
+  //   break;
+  //   case 'B':  
+  //     go_Back(); 
+  //     analogWrite(ENA,SPEED);
+  //   break;
+  //   case 'X': 
+  //     go_Back();
+  //     if(cs.angle=1)  turn(LEFT);
+  //     if(cs.angle=2)  turn(SHARP_LEFT); 
+  //     analogWrite(ENA,SPEED);
+  //   break;
+  //   case 'Y':  
+  //     go_Back();
+  //     if(cs.angle=-1) turn(RIGHT);
+  //     if(cs.angle=-2) turn(SHARP_RIGHT);  
+  //     analogWrite(ENA,SPEED);
+  //   break;
  
-    case 'E': stop_Stop() ;break;
-    case 'J': stop_Stop() ;break;
-    default:break;
-  }
+  //   case 'E': stop_Stop() ;break;
+  //   case 'J': stop_Stop() ;break;
+  //   default:break;
+  // }
 }
 
 car_status get_status( char buffUART[])
