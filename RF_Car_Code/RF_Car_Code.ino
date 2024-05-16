@@ -12,7 +12,7 @@
  */
 // RF RACE CAR CODE
 
-#include <PWMServo.h>
+#include "PWMServo.h"
 #include <SoftwareSerial.h>
 #include <SPI.h> 
 
@@ -139,8 +139,7 @@ SPI.attachInterrupt();
 head.attach(SERVO_PIN);
  turn(FRONT);
 
- Serial.begin(9600);
- BLTSerial.begin(9600);
+
 }
 
  
@@ -151,14 +150,22 @@ void do_Uart_Tick()
 {
   while (!flag)
   {
+    Serial.println("waiting");
   }
+  Serial.println("");
+  Serial.print(rxData[1],DEC);
+  Serial.print("  ");
+  Serial.println(rxData[0],DEC);
   int8_t thrust = rxData[0];
   int8_t stear = rxData[1];
   bool forward = (thrust > 0);
   thrust = thrust * 2;
   stear = stear / 4;
   stear = stear + FRONT;
-  if (forward) {
+  Serial.print(stear, DEC);
+  Serial.print("  ");
+  Serial.println(thrust, DEC);
+  if (forward) { 
     go_Advance();
   }else{
     go_Back();
